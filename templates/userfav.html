@@ -1,0 +1,41 @@
+{% extends 'personal_base.html' %}
+{% load staticfiles %}
+
+{% block rightContent %}
+<div class="userInforight">
+    <ul class="nav nav-tabs">
+        <li role="presentation"><a href="{% url 'users:personal' %}">我的发布</a></li>
+        <li role="presentation"><a href="{% url 'users:goodsfav' %}">商品收藏</a></li>
+        <li role="presentation" class="active"><a href="{% url 'users:userfav' %}">卖主收藏</a></li>
+    </ul>
+        <div class="favList">
+            <ul>
+                {% for user in user_list %}
+                <li>
+                    <div class="{% if forloop.first %} contentDiv1 {% else %} contentDiv2 {% endif %}">
+                        <div class="contentleft">
+                            <img src="{{ MEDIA_URL }}{{ user.image }}"/>
+                        </div>
+                        <div class="contentright">
+                            <p>姓名：{{ user.username }}</p>
+                            <p>学号：{{ user.studentid }}</p>
+                            <p>班级：{{ user.grade }}</p>
+                            <p>联系方式: {{ user.phone }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 在校宿舍：{{ user.address }}</p>
+                            <p>激活时间：{{ user.activetime|date:"Y-m-d" }}<span class="delete" onclick="del({{ user.id }})">删除</span></p>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+function del(fav_id) {
+        window.location = "/operation/userfav/del/" + fav_id;
+    }
+</script>
+{% endblock %}

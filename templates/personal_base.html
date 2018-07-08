@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/personal.css' %}">
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+<section class="header">
+    <div class="row">
+        <div class="col-lg-3 col-lg-offset-2">
+            <div class="logo">
+                <a href="index.html"><img src="{% static 'img/logo.jpg' %}" class="img-rounded"></a>
+                <div>
+                    用户个人中心
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-lg-offset-3">
+            <div class="first">
+                <span><a href="{% url 'index' %}">返回首页</a></span>
+            </div>
+        </div>
+    </div>
+    <hr>
+</section>
+
+<section class="userCenter">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div class="userInfo">
+                <div class="userInfoleft">
+                    <div class="user">
+                        <div class="col-md-12"><img src="{{ MEDIA_URL }}{{ request.user.image }}" class="img-circle"></div>
+                        <div class="col-md-12"><input type="button" value="修改密码" id="jsAlterPassword"></div>
+                        <div class="col-md-12">姓名：{{ request.user.username }}</div>
+                        <div class="col-md-12">学号：{{ request.user.studentid }}</div>
+                        <div class="col-md-12">班级：{{ request.user.grade }}</div>
+                        <div class="col-md-12">电话：{{ request.user.phone }}</div>
+                        <div class="col-md-12">邮箱：{{ request.user.email }}</div>
+                        <div class="col-md-12">激活时间：{{ request.user.activetime|date:"Y-m-d" }}</div>
+                        <div class="col-md-12"><input type="button" value="修改用户信息" id="jsAlterImg"></div>
+                    </div>
+                </div>
+                {% block rightContent %}
+
+                {% endblock %}
+        </div>
+    </div>
+
+</section>
+
+<script rel="stylesheet" src="{% static 'js/jquery-1.11.1.js' %}"></script>
+<script rel="stylesheet" src="{% static 'js/bootstrap.js' %}"></script>
+<script>
+    $(function () {
+        $("#jsAlterImg").click(function () {
+            window.location = "/users/userinfoalter/" + {{ request.user.id }};
+        });
+
+        $("#jsAlterPassword").click(function () {
+            window.location = "/users/alterpassword";
+        });
+    });
+</script>
+{% block js %}
+{% endblock %}
+</body>
+</html>

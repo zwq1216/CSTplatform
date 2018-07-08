@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    书籍详细信息
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}">
+{% endblock %}
+
+{% block bread %}
+<section class="bread">
+    <div class="row">
+        <div class="col-lg-offset-1 col-lg-10">
+            <div class="breadDiv">
+                <span><a href="{% url 'index' %}">首页</a></span>
+                <span>&nbsp;>&nbsp;</span>
+                <span><a href="{% url 'goods:book_list' %}">二手书籍</a></span>
+                <span>&nbsp;>&nbsp;</span>
+                <span>{{ book_detail.goods_title }}</span>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<section class="goodsInfo">
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-1 infoBackgoundColor">
+         <div class="goodsTitle">
+             <div class="col-lg-8 detailTitle">
+                <p>{{ book_detail.goods_title }}</p>
+                 <p><span class="price1">{{ book_detail.price }}</span>
+                     <span class="pubdate">发布日期：{{ book_detail.add_time }}</span>
+{#                    <input type="button" id="LeftBtn" value="{% if has_fav_goods %} 已收藏 {% else %} 收藏 {% endif %}">#}
+                 </p>
+             </div>
+            <div class="col-lg-4 detailTitle">
+                <div class="btn favbtn "data-favid="14" id="LeftBtn">
+                    {% if has_fav_goods %}已收藏{% else %}收藏{% endif %}
+                </div>
+            </div>
+             <div class="col-lg-12 detailUser">
+                    <div class="col-lg-5 detailUserLeft"><img src="{{ MEDIA_URL }}{{ book_detail.goodsimage_set.all.first.image }}"></div>
+                    <div class="col-lg-7 detailUserRight">
+                        <div class="col-md-4">价格：</div><div class="col-md-8 price2">{{ book_detail.price }}</div>
+                        <div class="col-md-4">原价：</div><div class="col-md-8">{{ book_detail.oprice }}</div>
+                        <div class="col-md-4">类型：</div><div class="col-md-8">书籍</div>
+                        <div class="col-md-4">发布人：</div><div class="col-md-8">{{ user.username }}</div>
+                        <div class="col-md-4">暂住地址：</div><div class="col-md-8">{{ book_detail.address }}</div>
+                        <div class="col-md-4">联系方式：</div><div class="col-md-8">{{ book_detail.phone }}</div>
+                    </div>
+             </div>
+             <div class="col-lg-12 detailInfo">
+                <div class="detailInfoContent">
+                    <strong>商品详细介绍</strong><br>
+                    {{ book_detail.description }}
+                </div>
+             </div>
+             <div class="col-lg-12">
+                {% for img in all_images %}
+                    <div class="showImg"><div class="hiddenImg"><img src="{{ MEDIA_URL }}{{ img.image }}"></div>
+                        <img src="{{ MEDIA_URL }}{{ img.image }}"></div>
+                {% endfor %}
+            </div>
+         </div>
+    </div>
+    <div class="col-lg-2 infoBackgoundColor">
+        <div class="userInfo">
+            <div class="col-md-12"><img src="{{ MEDIA_URL }}{{ user.image }}" class="img-circle"></div>
+            <div class="col-md-12">姓名：{{ user.username }}</div>
+            <div class="col-md-12">学号：{{ user.studentid }}</div>
+            <div class="col-md-12">班级：{{ user.grade }}</div>
+            <div class="col-md-12">激活时间：{{ user.activetime|date:"Y-m-d" }}</div>
+            <div class="col-md-12">
+                <div class="btn favbtn1 "data-favid="14" id="RightBtn">
+                    {% if has_fav_user %}已收藏{% else %}收藏{% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+{% endblock %}
+
+{% block js %}
+    <script rel="stylesheet" src="{% static 'js/detail.js' %}"></script>
+    <script type="text/javascript">
+        function add_fav(current_dom, fav_id, fav_type) {
+            $.ajax({
+                    cache: false,
+                    url: "{% url 'operation:user_fav' %}",
+                    data: {'fav_id': fav_id, 'fav_type': fav_type},
+                    type: "post",
+                    async: true,
+                    beforeSend:function(xhr, settings){
+                        xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                    },
+                    success: function(data){
+                        data = JSON.parse(data);
+                            if(data['status'] == 0){
+                                current_dom.html(data.msg);
+                            }
+                            else if(data['status'] == 1){
+                                alert(data['msg']);
+                                window.location = "/login";
+                            }
+                    },
+            });
+        }
+    $("#LeftBtn").click(function () {
+        add_fav($(this), {{ book_detail.id }}, 2);
+    });
+    $("#RightBtn").click(function () {
+        add_fav($(this), {{ user.id }}, 1);
+    });
+    </script>
+{% endblock %}

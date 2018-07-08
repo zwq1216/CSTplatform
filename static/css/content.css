@@ -1,0 +1,103 @@
+.advertising{
+    margin-top: 10px;
+    height: 380px;
+    width: 100%;
+    /*background-color: #2b669a;*/
+}
+
+.books{
+    margin-top: 10px;
+    height: 600px;
+    width: 100%;
+    /*background-color: #2aabd2;*/
+}
+.HeaderHeight{
+    height: 40px;
+    padding-left: 0;
+    /*background-color: red;*/
+}
+.HeaderHeight p{
+    font-size: 24px;
+    margin-top: 5px;
+}
+.HeaderHeight p a{
+    font-size: 18px;
+}
+.BodyHeight{
+    height: 560px;
+    /*background-color: #2b542c;*/
+}
+
+
+.goods{
+    width: 190px;
+    height: 260px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+    border: 1px solid #CCCCCC;
+    overflow: hidden;
+    z-index: 1;
+}
+.goods img{
+    width: 198px;
+    height: 200px;
+}
+.six{
+    margin-left: 0;
+}
+.goods p{
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 5px;
+}
+.goods span{
+    padding-left: 40px;
+    margin-bottom: 5px;
+}
+.price{
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+}
+.goods:hover{
+    border: 1px solid red;
+    cursor: pointer;
+}
+
+
+.tools{
+    margin-top: 10px;
+    height: 600px;
+    width: 100%;
+    /*background-color: #2b542c;*/
+}
+
+.eleProduct{
+    margin-top: 10px;
+    height: 600px;
+    width: 100%;
+    /*background-color: #2b542c;*/
+}
+
+.other{
+    margin-top: 10px;
+    height: 600px;
+    width: 100%;
+    /*background-color: #2b542c;*/
+}
+
+.totop{
+    width: 55px;
+    height: 60px;
+    cursor: pointer;
+    position: fixed;
+    top:80%;
+    right: 0;
+    display: none;
+    background-image: url(../img/totop.jpg);
+    opacity: 0.8;
+}
+.totop:hover{
+    opacity: 0.4;
+}

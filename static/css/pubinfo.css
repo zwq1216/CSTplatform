@@ -1,0 +1,65 @@
+body{
+    background-color: #F6F6F6;
+}
+.pubinfo{
+    margin-top: 80px;
+}
+
+.goodsinfo{
+    margin-left: 50px;
+}
+.goodsinfo label{
+    font-size: 18px;
+}
+.goodsimg{
+    height: 240px;
+    width: 200px;
+    margin-left: 20px;
+    float: left;
+    border: 1px solid #AAAAAA;
+}
+
+.imgtop{
+    width: 198px;
+    height: 200px;
+    background-color: #F6F6F6;
+}
+.imgtop img{
+    width: 190px;
+    height: 185px;
+    padding-left: 8px;
+    padding-top: 10px;
+}
+
+.imgbottom{
+    width: 200px;
+    height: 40px;
+    border-top: 1px solid #AAAAAA;
+}
+
+.imgInput{
+    height: 35px;
+    width: 180px;
+    margin-left: 10px;
+    margin-top: 5px;
+    border: none;
+}
+.desc{
+    font-size: 16px;
+    color: #ff6666;
+    margin-left: 30px;
+}
+.bigtitle{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.bigtitle span{
+    margin-left: 200px;
+    font-size: 14px;
+}
+.sele{
+    height: 35px;
+    width: 200px;
+}

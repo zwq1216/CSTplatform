@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>email密码修改</title>
+</head>
+<body>
+<form method="post" action="{% url 'users:sendemail' %}">
+    <label>邮箱号码：</label><input type="text" name="email">
+    <input type="submit" value="发送修改连接">
+    {% csrf_token %}
+</form>
+</body>
+</html>

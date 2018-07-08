@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>{% block title %}校园二手交易平台{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/banner.css' %}">
+    <link rel="stylesheet" href="{% static 'css/content.css' %}">
+    {% block css %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="row topnav">
+            <div class="col-lg-3 col-lg-offset-1"><p>管理员手机号码:15716659774</p></div>
+            <div class="col-lg-2 col-lg-offset-5"><div class="person">
+
+                <div class="personInfo">
+                    <div class="personspan">
+                    {% if request.user.is_authenticated %}
+                    <span><img src="{{ MEDIA_URL }}{{ request.user.image }}" style="width: 20px;height: 20px;" class="img-circle">
+                        &nbsp;{{ request.user.username }}&nbsp;<img src="{% static 'img/down.png' %}"></span>
+                    </div>
+                    <div class="personal">
+                        <ul>
+                            <li class="f1"><img src="{{ MEDIA_URL }}{{ request.user.image }}" style="width:40px;height: 40px;" class="img-circle"></li>
+                            <li class="f3">{{ request.user.username }}<br>{{ request.user.studentid }}</li>
+                            <li class="f1 fr" id="jsPersonal">进入用户中心</li><li class="f2 fr" id="jsLogoutBtn">退出</li>
+                        </ul>
+                    </div>
+                </div>
+                {% else %}
+                <a href="{% url 'login' %}">登录</a> | <a href="{% url 'register' %}">注册</a>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<!--头部展示-->
+<section class="header">
+<div class="row">
+    <div class="col-lg-3 col-lg-offset-1">
+        <div class="logo">
+        <img src="{% static 'img/logo.jpg' %}" class="img-rounded">
+        <div>
+            校园二手<br>
+            交易平台
+        </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="input-group search">
+        <input type="text" class="form-control" placeholder="请输入商品名称" id="goodsname"/>
+            <span class="input-group-btn">
+                   <button class="btn btn-info btn-search" id="jsSearchBtn">搜索一下</button>
+            </span>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-lg-offset-1">
+        <div class="release" id="jsRelease">
+            <p>免费发布二手信息</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<!--导航部分-->
+<nav class="contentnav">
+<div class="row">
+    <div class="col-lg-9 col-lg-offset-1">
+        <div class="wp">
+            <ul>
+                <li id="indexJs" {% if request.path == '/' %} class="active" {% endif %}><p>首页</p></li>
+                <li id="bookJs" {% if request.path|slice:":12" == '/goods/books' %} class="active" {% endif %}><p>书籍类</p></li>
+                <li id="toolJs" {% if request.path|slice:":12" == '/goods/tools' %} class="active" {% endif %}><p>机动类</p></li>
+                <li id="eleproductJs" {% if request.path|slice:":18" == '/goods/eleproducts' %} class="active" {% endif %}><p>电子产品</p></li>
+                <li id="otherJs" {% if request.path|slice:":13" == '/goods/others' %} class="active" {% endif %}><p>其他</p></li>
+{#                <li id="schoolShop"><p>校园商店</p></li>#}
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-1">
+        <div class="wp">
+            <ul>
+                <li id="schoolShop"><p>校园商店</p></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</nav>
+
+{% block bread %}
+
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+<footer class="footer">
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+        <div class="col-lg-1 logofooter">
+            <img src="{% static 'img/logofooter.jpg' %}" class="img-rounded">
+        </div>
+        <div class="col-lg-2 col-lg-offset-7">
+            <div class="tell">
+                <img src="{% static 'img/tell.png' %}">
+            </div>
+            <div class="phone">
+                15716659774
+                周一至周六
+            </div>
+        </div>
+    </div>
+</div>
+</footer>
+<script rel="stylesheet" src="{% static 'js/jquery-1.11.1.js' %}"></script>
+<script rel="stylesheet" src="{% static 'js/bootstrap.js' %}"></script>
+<script rel="stylesheet" src="{% static 'js/basejs.js' %}"></script>
+<script rel="stylesheet" src="{% static 'js/content.js' %}"></script>
+<script rel="stylesheet" src="{% static 'js/banner.js' %}"></script>
+{% block js %}{% endblock %}
+</body>
+</html>

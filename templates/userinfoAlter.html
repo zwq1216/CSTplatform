@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/userinfoAlter.css' %}">
+</head>
+<body>
+<section class="header">
+    <div class="row">
+        <div class="col-lg-3 col-lg-offset-2">
+            <div class="logo">
+                <a href="index.html"><img src="{% static 'img/logo.jpg' %}" class="img-rounded"></a>
+                <div>
+                    个人信息修改
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-lg-offset-3">
+            <div class="first">
+                <span><a href="index.html">返回首页</a></span>
+            </div>
+        </div>
+    </div>
+    <hr>
+</section>
+
+<section>
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div>
+                <form class="form-horizontal" action="{% url 'users:userinfosave' %}" method="post">
+                    <div class="form-group" style="margin-top: 20px">
+                        <label class="col-sm-2 control-label">学号</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" value="{{ user.studentid }}" name="studentid" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <label class="col-sm-2 control-label">班级</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" value="{{ user.grade }}" name="grade" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <label class="col-sm-2 control-label">姓名</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" value="{{ user.username }}" name="username" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">在校宿舍号</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" value="{{ user.address }}" name="address">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">手机号</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" value="{{ user.phone }}" name="phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">邮箱号码</label>
+                        <div class="col-sm-5">
+                            <input type="email" class="form-control" value="{{ user.email }}" name="email">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <label class="col-sm-2 control-label">上次修改时间</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" value="{{ user.altertime }}" name="altertime" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <label class="col-sm-2 control-label">激活时间</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" value="{{ user.activetime }}" name="activetime" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <button type="submit" class="btn btn-default">保存</button>
+                        </div>
+                    </div>
+                    {% csrf_token %}
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+</body>
+</html>

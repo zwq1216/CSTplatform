@@ -1,0 +1,38 @@
+.header{
+    margin-top: 5px;
+    height: 90px;
+    width: 100%;
+    /*background-color: #9acfea;*/
+}
+
+.logo{
+    margin-top: 10px;
+}
+.logo img{
+    float: left;
+    opacity: 0.6;
+}
+.logo div{
+    float: left;
+    margin-top: 40px;
+    margin-left: 15px;
+    font-size: 24px;
+    color: #D3D308;
+}
+
+.first{
+    margin-top: 65px;
+}
+.first span a{
+    font-size: 16px;
+    color: #D3D308;
+}
+.first a:hover{
+    cursor: pointer;
+    text-decoration: none;
+    color: gold;
+}
+
+hr{
+    margin-top: 0;
+}

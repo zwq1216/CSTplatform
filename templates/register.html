@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+<body>
+<div class="row">
+    <div class="col-lg-6 col-lg-offset-3 Rheader">
+        <span class="header1">用户注册</span><span class="header2"><a href="{% url 'index' %}">回到首页</a></span>
+    </div>
+    <div class="col-lg-6 col-lg-offset-3 content1">
+        <div class="bodyleft"><img src="{% static 'img/register.jpg' %}"></div>
+        <div class="bodyright1">
+            <form class="form-horizontal" action="#" method="post">
+                <div class="form-group" style="margin-top: 20px">
+                    <label class="col-sm-3 control-label">学号</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="学号" name="studentid">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">密码</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" placeholder="新密码" name="password1">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">确认密码</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" placeholder="确认密码" name="password2">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">邮箱号码</label>
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control" placeholder="邮箱号码" name="email">
+                    </div>
+                </div>
+                <div class="form-group captcha1">
+                    <label class="col-sm-3 control-label">验证码</label>
+                    <div class="col-sm-9">
+                            {{ register_form.captcha }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <button type="button" id="jsRegisterBtn" class="btn btn-default">新用户注册</button>
+                    </div>
+                </div>
+                <span id="errorShow"></span>
+                {% csrf_token %}
+            </form>
+        </div>
+    </div>
+
+</div>
+<script rel="stylesheet" src="{% static 'js/jquery-1.11.1.js' %}"></script>
+<script rel="stylesheet" src="{% static 'js/login.js' %}"></script>
+<script>
+$(function () {
+    $("#jsRegisterBtn").click(function () {
+        $.ajax({
+        cache: false,
+        url: "{% url 'register' %}",
+        data: $("form").serialize(),
+        type: "post",
+        async: true,
+        success: function(data){
+            data = JSON.parse(data);
+            if (data["status"] == 1){
+                alert(data["msg"]);
+                 window.location = "/login/";
+            }
+            else {
+                $("#errorShow").html(data["msg"]).show();
+            }
+        }
+    });
+});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+.imageSlider {
+    position: relative;
+    width: 1000px;
+    height: 380px;
+    overflow: hidden;
+}
+
+.imageBox {
+    position: absolute;
+    height: 380px;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+.imageBox img {
+    display: block;
+    float: left;
+    height: 380px;
+    width: 1000px;
+}
+
+.titleBox {
+    position: absolute;
+    bottom: 0px;
+    width: 1090px;
+    height: 40px;
+    overflow: hidden;
+}
+.titleBox p {
+    position: absolute;
+    bottom: -40px;
+    width: 1090px;
+    height: 40px;
+    margin: 0px;
+    padding: 0px 10px;
+    line-height: 40px;
+    color: #fff;
+    background-color: #000;
+    font-size: 16px;
+    opacity: 0.6;  /* 透明度 */
+    z-index: 1;
+}
+.titleBox p .active {
+    bottom: 0px; /* 用于显示当前图片的标题 */
+}
+
+.icoBox {
+    position: absolute;
+    bottom: 14px;
+    right: 15px;
+    width: 76px;
+    height: 12px;
+    text-align: center;
+    line-height: 40px;
+    z-index: 10;
+}
+.icoBox span {
+    display: block;
+    float: left;
+    width: 12px;
+    height: 12px;
+    margin-left: 3px;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    overflow: hidden;
+}
+.icoBox span.active {
+    background-color: #f66;
+    cursor: default;
+}

@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load poll_extras %}
+{% block content %}
+<!--赞助商广告-->
+<section class="advertising">
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+    <div class="imageSlider">
+        <div class="imageBox">
+            {% for banner in all_banners %}
+            <a href="{{ banner.url }}" target="_blank"><img src="{{ MEDIA_URL }}{{ banner.image }}" /></a>
+            {% endfor %}
+        </div>
+
+        <div class="titleBox">
+            {% for banner in all_banners %}
+                {% if forloop.first %}
+                    <p class="active"><span>{{ banner.title }}</span></p>
+                {% else %}
+                    <p>{{ banner.title }}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="icoBox">
+            {%  for i in all_banners.count|list %}
+                {% if forloop.first %}
+                    <span class="active" rel="{{ i }}">{{ i }}</span>
+                {% else %}
+                    <span rel="{{ i }}">{{ i }}</span>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+</div>
+</section>
+
+<!--书籍类最新发布-->
+<section class="books">
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1 HeaderHeight">
+        <div class="col-lg-2">
+            <p><strong>二手书籍</strong></p>
+        </div>
+        <div class="col-lg-2 col-lg-offset-7">
+            <p><a href="{% url 'goods:book_list' %}"><strong>更多二手书籍</strong></a></p>
+        </div>
+    </div>
+    <div class="col-lg-10 col-lg-offset-1 BodyHeight">
+        <div class="Info">
+            {% for book in goods_books %}
+                <div class="goods {% if forloop.counter == 1 or forloop.counter == 6 %} six {% endif %}">
+                    <a href="{% url 'goods:book_detail' book.id %}"><img src="{{ MEDIA_URL }}{{ book.goodsimage_set.all.first.image }}"/></a><p>{{ book.goods_title }}</p>
+                    <span class="price">{{ book.price }}</span><span>{{ book.add_time|date:"Y-m-d" }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</section>
+
+<!--工具类最新发布-->
+<section class="tools">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 HeaderHeight">
+            <div class="col-lg-2">
+                <p><strong>二手机动</strong></p>
+            </div>
+            <div class="col-lg-2 col-lg-offset-7">
+                <p><a href="{% url 'goods:tool_list' %}"><strong>更多二手机动</strong></a></p>
+            </div>
+        </div>
+        <div class="col-lg-10 col-lg-offset-1 BodyHeight">
+            <div class="Info">
+                {% for tool in goods_tools %}
+                    <div class="goods {% if forloop.counter == 1 or forloop.counter == 6 %} six {% endif %}">
+                        <a href="{% url 'goods:tool_detail' tool.id %}"><img src="{{ MEDIA_URL }}{{ tool.goodsimage_set.all.first.image }}"/></a><p>{{ tool.goods_title }}</p>
+                        <span class="price">{{ tool.price }}</span><span>{{ tool.add_time|date:"Y-m-d" }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--电子产品-->
+<section class="eleProduct">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 HeaderHeight">
+            <div class="col-lg-2">
+                <p><strong>电子产品</strong></p>
+            </div>
+            <div class="col-lg-2 col-lg-offset-7">
+                <p><a href="{% url 'goods:eleproduct_list' %}"><strong>更多电子产品</strong></a></p>
+            </div>
+        </div>
+        <div class="col-lg-10 col-lg-offset-1 BodyHeight">
+            <div class="Info">
+                {% for eleproduct in goods_eleproducts %}
+                    <div class="goods {% if forloop.counter == 1 or forloop.counter == 6 %} six {% endif %}">
+                        <a href="{% url 'goods:eleproduct_detail' eleproduct.id %}"><img src="{{ MEDIA_URL }}{{ eleproduct.goodsimage_set.all.first.image }}"/></a><p>{{ eleproduct.goods_title }}</p>
+                        <span class="price">{{ eleproduct.price }}</span><span>{{ eleproduct.add_time|date:"Y-m-d" }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--其他-->
+<section class="other">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 HeaderHeight">
+            <div class="col-lg-2">
+                <p><strong>其他二手</strong></p>
+            </div>
+            <div class="col-lg-2 col-lg-offset-7">
+                <p><a href="{% url 'goods:other_list' %}"><strong>更多其他二手</strong></a></p>
+            </div>
+        </div>
+        <div class="col-lg-10 col-lg-offset-1 BodyHeight">
+            <div class="Info">
+                {% for other in goods_others %}
+                    <div class="goods {% if forloop.counter == 1 or forloop.counter == 6 %} six {% endif %}">
+                        <a href="{% url 'goods:other_detail' other.id %}"><img src="{{ MEDIA_URL }}{{ other.goodsimage_set.all.first.image }}"/></a><p>{{ other.goods_title }}</p>
+                        <span class="price">{{ other.price }}</span><span>{{ other.add_time|date:"Y-m-d" }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+<div class="totop">
+
+</div>
+</section>
+{% endblock %}
+

@@ -1,0 +1,72 @@
+body{
+    background-color: #4cae4c;
+}
+
+.header{
+    height: 40px;
+    margin-top: 120px;
+}
+.Rheader{
+    height: 40px;
+    margin-top: 80px;
+}
+.header1{
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-left: 20px;
+}
+.header2{
+    font-weight: bold;
+    font-size: 18px;
+    color: #ffffff;
+    margin-left: 400px;
+}
+.header2 a{
+    font-weight: bold;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.content{
+    height: 350px;
+    background-color: #ffffff;
+}
+.content1{
+    height: 400px;
+    background-color: #ffffff;
+}
+
+.bodyleft{
+    margin-top: 25px;
+    width: 240px;
+    float: left;
+}
+
+.bodyleft img{
+    padding: 0;
+    width: 240px;
+    height:300px;
+}
+
+.bodyright1{
+    margin-top: 15px;
+    width: 360px;
+    float: right;
+}
+
+.bodyright2{
+    margin-top: 40px;
+    width: 360px;
+    float: right;
+}
+.forget{
+    float: right;
+    padding-right: 15px;
+    font-size: 16px;
+
+}
+.errormsg{
+    font-size: 18px;
+    color: #761c19;
+}

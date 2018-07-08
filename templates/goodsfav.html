@@ -1,0 +1,58 @@
+{% extends 'personal_base.html' %}
+{% load staticfiles %}
+
+{% block rightContent %}
+<div class="userInforight">
+    <ul class="nav nav-tabs">
+        <li role="presentation"><a href="{% url 'users:personal' %}">我的发布</a></li>
+        <li role="presentation" class="active"><a href="{% url 'users:goodsfav' %}">商品收藏</a></li>
+        <li role="presentation"><a href="{% url 'users:userfav' %}">卖主收藏</a></li>
+    </ul>
+        <div class="favList">
+            <ul>
+                {% for pub in goods_list %}
+                <li>
+                    <div class="{% if forloop.first %} contentDiv1 {% else %} contentDiv2 {% endif %}">
+                        <div class="contentleft">
+                             {% if pub.category == 1 %}
+                                <a href="{% url 'goods:book_detail' pub.id %}"><img src="{{ MEDIA_URL }}{{ pub.goodsimage_set.all.first.image }}"/></a>
+                            {% elif pub.category == 2 %}
+                                <a href="{% url 'goods:tool_detail' pub.id %}"><img src="{{ MEDIA_URL }}{{ pub.goodsimage_set.all.first.image }}"/></a>
+                            {% elif pub.category == 3 %}
+                                <a href="{% url 'goods:eleproduct_detail' pub.id %}"><img src="{{ MEDIA_URL }}{{ pub.goodsimage_set.all.first.image }}"/></a>
+                            {% elif pub.category == 4 %}
+                                <a href="{% url 'goods:other_detail' pub.id %}"><img src="{{ MEDIA_URL }}{{ pub.goodsimage_set.all.first.image }}"/></a>
+                            {% endif %}
+                        </div>
+                        <div class="contentright">
+                            <p>
+                                {% if pub.category == 1 %}
+                                    <a href="{% url 'goods:book_detail' pub.id %}">{{ pub.goods_title }}</a>
+                                {% elif pub.category == 2 %}
+                                    <a href="{% url 'goods:tool_detail' pub.id %}">{{ pub.goods_title }}</a>
+                                {% elif pub.category == 3 %}
+                                    <a href="{% url 'goods:eleproduct_detail' pub.id %}">{{ pub.goods_title }}</a>
+                                {% elif pub.category == 4 %}
+                                    <a href="{% url 'goods:other_detail' pub.id %}">{{ pub.goods_title }}</a>
+                                {% endif %}
+                                <span>{{ pub.price }}</span></p>
+                            <p>{{ pub.description|slice:":25" }}......</p>
+                            <br>
+                            <p>发布时间：{{ pub.add_time|date:"Y-m-d" }}<span class="delete" onclick="javascript:del({{ pub.id }})">删除</span></p>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+     function del(fav_id) {
+        window.location = "/operation/fav/del/" + fav_id;
+    }
+</script>
+{% endblock %}

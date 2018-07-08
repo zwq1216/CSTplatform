@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>忘记密码</title>
+</head>
+<style>
+    .position1{
+        margin-left: 350px;
+        margin-top: 200px;
+    }
+</style>
+<body>
+<form method="post" action="">
+    <div class="position1">
+        <table>
+            <tr><td><label>学号:</label></td><td><input type="text" name="studentid"></td></tr>
+            <tr><td><label>新密码:</label></td><td><input type="password" name="password1"></td></tr>
+            <tr><td><label>再输一遍:</label></td><td><input type="password" name="password2"></td></tr>
+            <tr><td><label>邮箱号码:</label></td><td><input type="text" name="email"></td></tr>
+            <tr><td><input type="button" id="jsForgetBtn" value="更改密码"></td></tr>
+        </table>
+        <span id="errorShow"></span>
+    </div>
+    {% csrf_token %}
+</form>
+<script rel="stylesheet" src="{% static 'js/jquery-1.11.1.js' %}"></script>
+<script>
+    $(function () {
+        $("#jsForgetBtn").click(function () {
+            $.ajax({
+            cache: false,
+            url: "{% url 'users:forgetpwd' %}",
+            data: $("form").serialize(),
+            type: "post",
+            async: true,
+            success: function(data){
+                data = JSON.parse(data);
+                if (data["status"] == 1){
+                    alert(data["msg"]);
+                     window.location = "/login";
+                }
+                else {
+                    $("#errorShow").html(data["msg"]).show();
+                }
+            }
+        });
+    });
+    });
+</script>
+</body>
+</html>

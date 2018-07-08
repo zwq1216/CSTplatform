@@ -1,0 +1,193 @@
+body{
+    background-color: #F6F6F6;
+}
+
+.navbar{
+    min-height:30px;
+}
+
+.topnav{
+    text-align: left;
+    color: #FCFCFC;
+}
+
+/*.topnav div{*/
+    /*background-color: #2b542c;*/
+/*}*/
+
+.topnav p{
+    margin: 5px 0px;
+}
+
+.person{
+    color: #FCFCFC;
+    text-align: right;
+    margin-top: 5px;
+}
+.header{
+    margin-top: 35px;
+    height: 90px;
+    width: 100%;
+    /*background-color: #9acfea;*/
+}
+
+.logo{
+    margin-top: 10px;
+}
+.logo img{
+    float: left;
+    opacity: 0.6;
+}
+.logo div{
+    float: left;
+    margin-top: 10px;
+    margin-left: 15px;
+    font-size: 24px;
+    color: gold;
+}
+
+.search{
+    margin-top: 20px;
+    margin-left: 10px;
+    positon: relative;
+}
+.search button{
+    background-color: #FF4466;
+}
+
+.release{
+    margin-top: 30px;
+    width: 160px;
+    height: 40px;
+    font-size: 16px;
+    background-color: #FF4466;
+}
+
+.release p{
+    padding-top: 10px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.release:hover{
+    cursor: pointer;
+    background-color: #2aabd2;
+}
+
+.contentnav{
+    height: 30px;
+    width: 100%;
+    background-color: #717171;
+}
+
+.wp li{
+    float: left;
+    height: 30px;
+    width: 80px;
+}
+
+.wp ul{
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+.wp li:hover,.active{
+    background: #2aabd2;
+}
+
+.wp ul li:hover{
+    cursor: pointer;
+}
+.wp li p{
+    margin-top: 5px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.footer{
+    margin-top: 20px;
+    height: 260px;
+    width: 100%;
+    background-color: #1E1E1E;
+    color: #ffffff;
+}
+
+.logofooter{
+    margin-top:30px;
+    margin-left: 20px;
+    opacity: 0.9;
+}
+
+.tell{
+    width: 45px;
+    height: 45px;
+    float: left;
+    margin-top: 50px;
+    border: 1px solid #4cae4c;
+}
+
+.phone{
+    width:80px;
+    height: 45px;
+    float: left;
+    margin-top: 50px;
+}
+.personInfo{
+    z-index: 1;
+}
+.personal{
+    width: 190px;
+    height: 70px;
+    background-color: #ffffff;
+    position: absolute;
+    top:31px;
+}
+
+.personal ul{
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    color: black;
+}
+
+.personal .f1{
+    margin-top: 4px;
+    width: 90px;
+    float: left;
+    text-align: center;
+    margin-left: 5px;
+}
+
+.personal .f2{
+    width: 75px;
+    float: right;
+    margin-right: 5px;
+    text-align: center;
+}
+.personal .f3{
+    width: 75px;
+    float: right;
+    margin-right: 5px;
+    text-align: center;
+    margin-top: 10px;
+}
+.personal .fr{
+    background-color: #FF4466;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.personal{
+    display: none;
+}
+
+
+.personspan{
+    margin-top: 0;
+    margin-bottom: 0;
+    cursor: pointer;
+    height: 26px;
+}
+

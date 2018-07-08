@@ -1,0 +1,164 @@
+.header{
+    margin-top: 5px;
+    height: 90px;
+    width: 100%;
+    /*background-color: #9acfea;*/
+}
+
+.logo{
+    margin-top: 10px;
+}
+.logo img{
+    float: left;
+    opacity: 0.6;
+}
+.logo div{
+    float: left;
+    margin-top: 40px;
+    margin-left: 15px;
+    font-size: 24px;
+    color: #D3D308;
+}
+
+.first{
+    margin-top: 65px;
+}
+.first span a{
+    font-size: 16px;
+    color: #D3D308;
+}
+.first a:hover{
+    cursor: pointer;
+    text-decoration: none;
+    color: gold;
+}
+
+hr{
+    margin-top: 0;
+}
+.userCenter{
+    margin-top: 20px;
+}
+
+.userInfo{
+    /*background-color: #ff6666;*/
+    /*height: 450px;*/
+}
+
+.userInfoleft{
+    width: 200px;
+    height: 500px;
+    background-color: #2b542c;
+    float: left;
+}
+
+.userInforight{
+    width: 600px;
+    /*height: 450px;*/
+    /*background-color: #245580;*/
+    margin-left: 5px;
+    float: left;
+}
+
+.favList ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.favList ul li img{
+    height: 120px;
+    width: 120px;
+    padding-top: 10px;
+}
+
+.contentDiv1{
+    height: 150px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-bottom: 1px dashed #dddddd;
+    margin-top: 20px;
+}
+.contentleft{
+    width: 120px;
+    float: left;
+}
+.contentright {
+    width: 400px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.contentright a{
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+.contentright a:hover{
+    color: #2aabd2;
+    text-decoration: none;
+}
+.contentright span{
+    font-size: 18px;
+    color: #FF4466;
+    float: right;
+    /*margin-left: 200px;*/
+    padding-right: 10px;
+}
+.contentright p{
+    font-size: 12px;
+}
+.contentDiv2{
+    height: 150px;
+    background-color: #ffffff;
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    border-bottom: 1px dashed #dddddd;
+}
+
+.contentright .delete{
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.contentright .delete:hover{
+    color: #843534;
+}
+
+.user div{
+    padding-left: 20px;
+    padding-top: 10px;
+    font-size: 16px;
+}
+.user div img{
+    width: 160px;
+    height: 160px;
+}
+.user div input{
+    width: 120px;
+    background-color: #1E1E1E;
+    color: #ffffff;
+    text-align: center;
+    border: none;
+    height: 30px;
+    font-size: 14px;
+}
+.user div input:hover{
+    background-color: #985f0d;
+}
+
+.user .activeImg{
+    width: 100px;
+    background-color: #1E1E1E;
+    color: #ffffff;
+    height: 30px;
+    font-size: 14px;
+}
+.user .activeImg span{
+    padding-left: 10px;
+    margin-top: 2px;
+}
+.user .activeImg:hover{
+    cursor: pointer;
+}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    机动类列表
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/list.css' %}">
+{% endblock %}
+
+{% block bread %}
+<section class="bread">
+    <div class="row">
+        <div class="col-lg-offset-1 col-lg-10">
+            <div class="breadDiv">
+                <span><a href="{% url 'index' %}">首页</a></span><span>&nbsp;>&nbsp;</span><span>二手机动</span>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<section class="content">
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+        <ul class="contentul">
+            {% for tool in goods_tools %}
+            <li class="contentli">
+                <div class="col-lg-12 {% if forloop.first %} contentDiv1 {% else %} contentDiv2 {% endif %}">
+                    <div>
+                        <div class="contentleft">
+                            <a href="{% url 'goods:tool_detail' tool.id %}"><img src="{{ MEDIA_URL }}{{ tool.goodsimage_set.all.first.image }}"/></a>
+                        </div>
+                        <div class="contentright">
+                            <p><a href="{% url 'goods:tool_detail' tool.id %}">{{ tool.goods_title }}</a><span>{{ tool.price }}</span></p>
+                            <p>{{ tool.description | slice:":30" }}.......</p>
+                            <br>
+                            <p>发布时间：{{ tool.add_time|date:"Y-m-d" }}</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>
+</section>
+{% endblock %}

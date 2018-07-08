@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>发布信息</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pubinfo.css' %}">
+</head>
+<body>
+<section>
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="pubinfo">
+                <div class="panel panel-default">
+                    <div class="panel-heading bigtitle">编辑基本的发布信息<span><a href="{% url 'index' %}">返回首页</a></span></div>
+                    <div class="panel-body">
+                        <div class="goodsinfo">
+                            <form class="form-horizontal" action="{% url 'operation:pubinfo' %}" method="post" enctype="multipart/form-data">
+                                <div class="form-group" style="margin-top: 20px">
+                                    <label class="col-sm-3 control-label">标题*</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="goodsTitle">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        填写你的标题，如:转让二手手机小米max<strong>（不能多于20字）</strong>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">价格*</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="price">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        填写你的出售价格 如:500元
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">原价*</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="oprice">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        填写你购买新品时的价格 如:1500元
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">商品类型*</label>
+                                    <div class="col-sm-4">
+                                        <select name="category" class="sele">
+                                          <option value="1" selected="selected">书籍类</option>
+                                          <option value="2">机动类</option>
+                                          <option value="3">电子产品</option>
+                                          <option value="4">其他</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        填选择你要发布商品的类型
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">地址*</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="address">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        填写你居住的寝室 如：公寓楼11#305
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">手机号*</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="phone">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        填写你的手机号，方便买家联系你
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">商品介绍*</label>
+                                    <div class="col-sm-4">
+                                        <textarea class="form-control" rows="6" name=description></textarea>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        介绍你的产品，新旧程度。如：八成新  哪个版本 哪个牌子<strong>（不要超过200字）</strong>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="desc">
+                                        卖主上传商品实体图片，最少1张，最多4张，书籍最好拍目录，清晰图片，方便他人利于自己(只支持jpg，jpeg, png格式)
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div>
+                                        <div class="goodsimg">
+                                            <div class="imgtop error1" id="imgresult1"></div>
+                                            <div class="imgbottom"><input type="file" class="imgInput" id="jsImg1" name="img1" onchange="javascript:filesup(1,'jsImg1', 'imgresult1')"></div>
+                                        </div>
+                                        <div class="goodsimg">
+                                            <div class="imgtop error2" id="imgresult2"></div>
+                                            <div class="imgbottom"><input type="file" class="imgInput" id="jsImg2" name="img2" onchange="javascript:filesup(2,'jsImg2', 'imgresult2')"></div>
+                                        </div>
+                                        <div class="goodsimg">
+                                            <div class="imgtop error3" id="imgresult3"></div>
+                                            <div class="imgbottom"><input type="file" class="imgInput" id="jsImg3" name="img3" onchange="javascript:filesup(3,'jsImg3', 'imgresult3')"></div>
+                                        </div>
+                                        <div class="goodsimg">
+                                            <div class="imgtop error4" id="imgresult4"></div>
+                                            <div class="imgbottom"><input type="file" class="imgInput" id="jsImg4" name="img4" onchange="javascript:filesup(4,'jsImg4', 'imgresult4')"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <button type="submit" class="btn btn-default" onclick="return retconfirm()">发布商品信息</button>
+                                    </div>
+                                </div>
+                                {% csrf_token %}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<script rel="stylesheet" src="{% static 'js/jquery-1.11.1.js' %}"></script>
+<script rel="stylesheet" src="{% static 'js/bootstrap.js' %}"></script>
+<script rel="stylesheet" src="{% static 'js/pubinfo.js' %}"></script>
+</body>
+</html>

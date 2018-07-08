@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    其他二手列表
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/list.css' %}">
+{% endblock %}
+
+{% block bread %}
+<section class="bread">
+    <div class="row">
+        <div class="col-lg-offset-1 col-lg-10">
+            <div class="breadDiv">
+                <span><a href="{% url 'index' %}">首页</a></span><span>&nbsp;>&nbsp;</span><span>其他二手</span>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<section class="content">
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+        <ul class="contentul">
+            {% for other in goods_others %}
+            <li class="contentli">
+                <div class="col-lg-12 {% if forloop.first %} contentDiv1 {% else %} contentDiv2 {% endif %}">
+                    <div>
+                        <div class="contentleft">
+                            <a href="{% url 'goods:other_detail' other.id %}"><img src="{{ MEDIA_URL }}{{ other.goodsimage_set.all.first.image }}"/></a>
+                        </div>
+                        <div class="contentright">
+                            <p><a href="{% url 'goods:other_detail' other.id %}">{{ other.goods_title }}</a><span>{{ other.price }}</span></p>
+                            <p>{{ other.description | slice:":30" }}.......</p>
+                            <br>
+                            <p>发布时间：{{ other.add_time|date:"Y-m-d" }}</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>
+</section>
+{% endblock %}

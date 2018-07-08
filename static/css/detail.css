@@ -1,0 +1,143 @@
+.bread{
+    margin-top: 10px;
+    height: 30px;
+    /*background-color: #4cae4c;*/
+}
+.breadDiv span,.breadDiv span a{
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+}
+.breadDiv span a:hover{
+    color: #2aabd2;
+    text-decoration: none;
+}
+
+.goodsInfo{
+    margin-top: 10px;
+}
+
+.goodsTitle{
+    height: 740px;
+    /*background-color: #2aabd2;*/
+}
+.detailTitle{
+    height: 120px;
+    /*background-color: #9acfea;*/
+}
+.detailTitle p{
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.price1{
+    font-size: 20px;
+    color: #FF4466;
+}
+.pubdate{
+    font-size: 18px;
+    margin-left: 30px;
+    font-weight: normal;
+}
+.favbtn{
+    width: 120px;
+    height: 35px;
+    font-size: 16px;
+    border: none;
+    background-color: #717171;
+    color: #ffffff;
+    float: right;
+    margin-right: 20px;
+    margin-top: 50px;
+}
+.favbtn1{
+    width: 120px;
+    height: 35px;
+    font-size: 16px;
+    border: none;
+    background-color: #717171;
+    color: #ffffff;
+    float: right;
+    margin-right: 20px;
+}
+.detailUser{
+    height: 450px;
+    /*background-color: #8a6d3b;*/
+}
+.detailUser .detailUserLeft{
+    height: 450px;
+    /*background-color: #245580;*/
+}
+.detailUser .detailUserLeft img{
+    height: 400px;
+    width: 300px;
+    padding-top: 20px;
+}
+.detailUser .detailUserRight div{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.detailUser .detailUserRight .price2{
+    font-size: 30px;
+    font-weight: bold;
+   color: #ff6666;
+}
+.detailInfo{
+    height: 200px;
+    /*background-color: #245580;*/
+}
+.detailInfo .detailInfoContent{
+    font-size: 16px;
+    margin-top: 20px;
+}
+.userInfo{
+    height: 820px;
+    background-color: #2b542c;
+}
+.userInfo div{
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 16px;
+}
+.userInfo div img{
+    width: 160px;
+    height: 160px;
+}
+
+.userInfo div input{
+    width: 120px;
+    background-color: #1E1E1E;
+    color: #ffffff;
+    text-align: center;
+    border: none;
+    height: 35px;
+}
+.infoBackgoundColor{
+    background-color: #ffffff;
+}
+.showImg{
+    width: 180px;
+    height: 240px;
+    /*background-color: #843534;*/
+    float: left;
+    margin-left: 10px;
+}
+.showImg img{
+    width: 180px;
+    height: 240px;
+    z-index: 1;
+}
+.hiddenImg{
+    width: 500px;
+    height: 400px;
+    position: fixed;
+    top: 40px;
+    left: 300px;
+    display: none;
+    z-index: 99;
+}
+.hiddenImg img{
+    width: 500px;
+    height: 400px;
+}
